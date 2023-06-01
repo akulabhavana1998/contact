@@ -14,12 +14,8 @@ const Contacts = () => {
     // console.log(AllContacts)
 
     const togglePopup = (contact) => {
-
         setSingleContact(contact)
-
         setIsOpen(!isOpen)
-
-
     }
     useEffect(() => {
 
@@ -29,7 +25,7 @@ const Contacts = () => {
             <div className="m-4">
                 <button className="rounded-full bg-violet-600 p-2 text-2xl">
                     <Link to="/contact_form">
-                        Create Contact
+                        CREATE CONTACT
                     </Link>
                 </button>
 
@@ -63,8 +59,8 @@ const Contacts = () => {
                                 </div>    <div className="text-left">
                                     <p>First Name : {el.first_name}</p>
                                     <p>Last Name  : {el.last_name}</p>
-                                    {/* <p>Mobile   : {el.mob}</p> */}
-                                    <p>Status     : {el.status == "active" ? "Active" : "Inactive"}</p>
+                                   
+                                    <p>Status    : {el.status == "active" ? "Active" : "Inactive"}</p>
                                 </div>
 
                             </div>
@@ -72,22 +68,19 @@ const Contacts = () => {
                             <div className="flex justify-between my-2">
                                 <Link to={`edit/${el.id}`}>
                                     <button className="rounded p-2 bg-violet-600 text-black">
-
-                                        Edit
+                                        EDIT
                                     </button>
                                 </Link>
 
-                                <button onClick={() => dispatch(removeContact(el.id))} className="rounded p-2 bg-red-600 text-white">Delete</button>
+                                <button onClick={() => dispatch(removeContact(el.id))} className="rounded p-2 bg-red-600 text-white">DELETE</button>
                             </div>
                         </div>
                     })
                 }
 
-
             </div>
-
         </div>
     )
 }
 
-export default Contacts
+export default Contacts;

@@ -5,8 +5,6 @@ import { editContact } from '../Redux/action';
 
 
 function EditContact() {
-
-
     const { id } = useParams()
     console.log(id)
 
@@ -14,33 +12,22 @@ function EditContact() {
 
     const AllContact = useSelector((store) => store.contacts)
 
-
-
     const [form, setForm] = useState({})
 
     const handleChange = (e) => {
-     
+
         setForm({
             ...form,
             [e.target.name]: e.target.value
         })
-
-
     }
 
-
-
-
     function handleSave() {
-
-
-
         dispatch(editContact({ id, ...form }))
 
     }
 
     useEffect(() => {
-
         AllContact.filter((el) => el.id == id && setForm(el))
 
     }, [])
@@ -74,33 +61,16 @@ function EditContact() {
                     onChange={handleChange}
                 />
             </div>
-            {/* <div className="mb-4">
-                <label className="block font-bold mb-2" htmlFor="last-name">
-                    Mobile Number
-                </label>
-                <input
-                    className="w-full border border-gray-400 p-2 rounded-md"
-                    id="last-name"
-                    type="number"
-                    name="mob"
-                    value={form.mob}
-                    onChange={handleChange}
-                />
-            </div> */}
+
             <div className="mb-4">
                 <label className="block font-bold mb-2" htmlFor="status">
                     Status
                 </label>
-                <select
-                    className="w-full border border-gray-400 p-2 rounded-md"
-                    id="status"
-                    name="status"
-                    value={form.status}
-                    onChange={handleChange}
-                >
-                    <option value={'active'}>Active</option>
-                    <option value={"inactive"}>Inactive</option>
-                </select>
+
+                <input type="radio" id="status" name="status" value={form.status} onChange={handleChange} />
+                <option value={'active'} type="radio">Active</option>
+                <input type="radio" id="status" name="status" value={form.status} onChange={handleChange} />
+                <option value={"inactive"} type="radio">Inactive</option>
             </div>
             <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
